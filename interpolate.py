@@ -54,7 +54,7 @@ def generate_interpolation(z1, z2, alpha):
   return images[0].cpu().numpy()
 
 # Spout and TD
-def main(data) :
+def main() :
     # create spout object
     spout = Spout(silent = False)
     # create receiver
@@ -62,17 +62,18 @@ def main(data) :
     # create sender
     spout.createSender('output')
 
-    while True :
-
+    img1,z1=generate_image_random(1056)
+    img2,z2=generate_image_random(2245)
+    i = 0
+    while True and i<5 :
+        img=generate_interpolation(z1,z2,0.5+i*0.5)
         # check on close window
         spout.check()
         # receive data
         #data = spout.receive()
         # send data
-        spout.send(data)
+        spout.send(img)
+        i=i+0.1
 
 if __name__ == "__main__":
-  img1,z1=generate_image_random(1000)
-  img2,z2=generate_image_random(3000)
-  img=generate_interpolation(z1,z2,0.5)
-  main(img)
+  main()
