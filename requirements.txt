@@ -13,3 +13,6 @@ pyopengl
 imageio-ffmpeg
 pyspng
 torch
+pygame
+pyopengl
+numpy

@@ -8,6 +8,9 @@ import PIL.Image
 from tqdm import tqdm
 import os
 
+# load Spout library
+from Library.Spout import Spout
+
 # Set Device
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -50,8 +53,26 @@ def generate_interpolation(z1, z2, alpha):
   PIL.Image.fromarray(images[0].cpu().numpy(), 'RGB').save(f'out/interp.png')
   return images[0].cpu().numpy()
 
+# Spout and TD
+def main(data) :
+    # create spout object
+    spout = Spout(silent = False)
+    # create receiver
+    #spout.createReceiver('input')
+    # create sender
+    spout.createSender('output')
+
+    while True :
+
+        # check on close window
+        spout.check()
+        # receive data
+        #data = spout.receive()
+        # send data
+        spout.send(data)
 
 if __name__ == "__main__":
   img1,z1=generate_image_random(1000)
   img2,z2=generate_image_random(3000)
   img=generate_interpolation(z1,z2,0.5)
+  main(img)
