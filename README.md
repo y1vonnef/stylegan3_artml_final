@@ -1,6 +1,7 @@
 ## Notes
 
 pip install -r requirements.txt
+python interpolate.py
 
 ## Alias-Free Generative Adversarial Networks (StyleGAN3)<br><sub>Official PyTorch implementation of the NeurIPS 2021 paper</sub>
 
