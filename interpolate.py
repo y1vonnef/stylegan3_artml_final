@@ -18,7 +18,8 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 import sys
 sys.path.append("stylegan3")
 
-path = "stylegan3-t-ffhq-1024x1024.pkl"
+# path = "stylegan3-t-ffhq-1024x1024.pkl"
+path = "neon.pkl"
 with open(path, 'rb') as f:
     G = pickle.load(f)['G_ema'].to(device)
 

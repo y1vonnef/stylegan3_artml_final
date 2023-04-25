@@ -301,3 +301,5 @@ __pycache__/
 .DS_Store
 
 stylegan3-t-ffhq-1024x1024.pkl
+smoky.pkl
+neon.pkl
